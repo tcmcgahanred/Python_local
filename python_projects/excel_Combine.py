@@ -55,6 +55,8 @@ def fileName(bfs):
 
 fileName(bfs)
 
+#Only prints 'LOAC'. Really need to learn how to iterate AND print all the output.
+
 ###############################################################################################################
 
 directory = 'C:\\Users\\timot\Documents\\Python_local\\python_projects'
