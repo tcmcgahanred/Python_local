@@ -89,6 +89,7 @@ for filename in os.listdir(directory):
 
 ### convert excel to csv. csvs are the only practical way to convert rows, in the format they're in from the webapp, into dictionaries. Pandas doesn't make it too easy.
 # can delete the csvs after, if necessary
+# I'd like to do WITHOUT pandas so I don't require that dependency for myself or other users. Also, not even sure it's an option on 'the network'.
 
 brief_xlsx = pd.read_excel('C:\\Users\\timot\Documents\\Python_local\\python_projects\\LOAC_20221105.xlsx') 
 briefTocsv = brief_xlsx.to_csv('C:\\Users\\timot\\Documents\\Python_local\\python_projects\\LOAC_20221105.csv', index = None, header=True)
