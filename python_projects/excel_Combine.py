@@ -11,24 +11,29 @@ import pandas as pd
 import numpy
 import csv
 import re
-#import presto as pr
 import importlib
-import glob
-
-# IGNORE: sys.path.append('C:/Users/timot/Documents/Python_local/python_projects/presto.py')
-
-# see end of file for DataFrame example. That's what the new brief file looks like that's used to update the master
+#import presto as pr
 
 
-cwd = os.getcwd()
-print("Current working directory: {0}".format(cwd))
+### NOTES: The flow should be to iterate over the files, get their respective briefname from the filename (e.g. LOAC_20221117.xlsx to just 'LOAC') to use in prestoChango, convert xlsx to csv, run prestoChango against the file, and then export all the updates to the master brief .txt. 
+# Another function, which i'll dev later, will print out information based on input provided by Mission Planners (e.g. SID and brief name)
+# Technically, the briefFiles function should be used to run briefName, prestoConverto, AND prestoChango subsequently against each file in the directory !!!!!!!!!!!!!!!!!
+# See end of file for DataFrame example. That's what the new brief file looks like that's used to update the master
 
+# i need a dry erase board
 
-### iterate over the brief files (e.g. LOAC, JFAM, etc) in that directory (KM will need to manually rename the file for now)
-# the flow would be to iterate over the files, get their respective name, run prestoChango against the file, and then export all the updates to the master brief .txt. Later, 
-# another function will print out information based on input provided by Mission Planners (e.g. SID and brief name)
+# for each file in the directory
+# get file name
+# get brief name from file name
+# convert xlsx file to csv
+# prestoChango does all the necessary conversions using briefName and other info and then exports data to text file
+# done# 
+
+### briefFiles function iterates over the 3x brief files (e.g. LOAC, JFAM, and [REDACTED]) in that directory (KM will need to manually rename the files for now)
 
 directory = 'C:\\Users\\timot\Documents\\Python_local\\python_projects'
+#cwd = os.getcwd() # can I just use this instead so I don't have to hardcode in a directory? Meaning, drop the script in the directory with the .xlsx files and gtg?
+#print("Current working directory: {0}".format(cwd))
  
 def briefFiles(directory):
     for filename in os.listdir(directory):
@@ -39,55 +44,44 @@ def briefFiles(directory):
 
 briefFiles(directory)            
 
-# make the file object accessible to the next group/function
+# make the file object accessible to the fileName function
 
-### get file names so that we can replace the 'Date Signed' column. This'd then indicate that the brief was completed on the date in that cell/row. # note: I'll need a directory iterator here so I don't have to hardcode in file names like this OR just the input variables at the end of the file
-#use file objects from previous functions to parse out name of each file, apart from the path.
-
-#path = 'C:\\Users\\timot\\Documents\\Python_local\\python_projects\\example_excel\\LOAC_20221105.xlsx'
+### Get file names from briefFiles and then use fileNames to get the brief name. 
 
 bfs = briefFiles(directory)
 
-def fileName(bfs):
-    file_name = os.path.basename(path).split('/')[-1] # get file name from path. Can this be combined with the below?
-    brief_name = re.findall('\w{3,4}', file_name)[0] # Parse out the brief name from the file name. (e.g. LOAC) Can this be combined with the above?
+file = 'C:\\Users\\timot\Documents\\Python_local\\python_projects\\LOAC_20221105.xlsx'
+
+
+def briefName(file):
+    file_name = os.path.basename(file).split('/')[-1] 
+    brief_name = re.findall('(LOAC|JFAM|UAUP)', file_name)[0]
     return brief_name
 
-fileName(bfs)
+briefName(file)
 
 #Only prints 'LOAC'. Really need to learn how to iterate AND print all the output.
 
-##############################EXPERIMENT#####################################################
-
-directory = 'C:\\Users\\timot\Documents\\Python_local\\python_projects'
- 
-# getting closer.... but is this what I want to do? Figure it out tomorrow.
-
-with open('brief_list.txt', 'w') as f:
-    for file in os.listdir(directory):
-        file_name = os.path.basename(file).split('/')[-1] 
-        brief_name = str(re.findall("(LOAC|JFAM|UAUP)", file_name))
-        f.write(brief_name + '\n')
-
-
-
-
-
-###############################################################################################################
-
 # make brief_name accessible to prestoChango
-
 
 ### convert excel to csv. csvs are the only practical way to convert rows, in the format they're in from the webapp, into dictionaries. Pandas doesn't make it too easy.
 # can delete the csvs after, if necessary
 # I'd like to do WITHOUT pandas so I don't require that dependency for myself or other users. Also, not even sure it's an option on 'the network'.
 
-brief_xlsx = pd.read_excel('C:\\Users\\timot\Documents\\Python_local\\python_projects\\LOAC_20221105.xlsx') 
-briefTocsv = brief_xlsx.to_csv('C:\\Users\\timot\\Documents\\Python_local\\python_projects\\LOAC_20221105.csv', index = None, header=True)
-brief_csv = 'C:\\Users\\timot\\Documents\\Python_local\\python_projects\\LOAC_20221105.csv'
 
-### function to convert csv rows to dictionaries and then do a few data conversions, inevitably formatting as strings to be printed to a text file:
-# Also, was working on making this a stand-alone module that I'd call into this program
+def prestoConverto():
+    for file in directory:
+        brief_xlsx = pd.read_excel(file) 
+        briefTocsv = brief_xlsx.to_csv(brief_xlsx, index = None, header=True)
+        #brief_csv = 'C:\\Users\\timot\\Documents\\Python_local\\python_projects\\LOAC_20221105.csv'
+
+### prestoChange function to convert csv rows to dictionaries and then do a few data conversions, inevitably formatting as strings to be printed to a text file:
+# Also, side note, I was working on making this a stand-alone module that I'd call into this program
+# sys.path.append('C:/Users/timot/Documents/Python_local/python_projects/presto.py')
+
+# Use the prestoConverto object to send to prestoChango
+# Use fileName object to replace the 'Date Signed' column. This'd then indicate that the brief was completed on the date in that cell/row. 
+# Use file objects from previous functions to parse out name of each file, apart from the path.
 
 def prestoChango(brief_csv): # need a function to capture all the dictionary conversions, with input being each individual dictionary
    with open(brief_csv, newline='') as csvfile:
@@ -114,29 +108,6 @@ def prestoChango(brief_csv): # need a function to capture all the dictionary con
 
 prestoChango(brief_csv) # GAH! Need to iterate over every row in the csvfile and append that to the text file!!!!!!!!!!!!!!!!!!!!!!!!!!!! HOW?!? Change the structure of the function somehow!?! use range() or a while loop?
 
-##############################EXPERIMENT#####################################################
-
-# experiement on recursive version here
-
-def prestoChango(brief_csv): 
-   with open(brief_csv, newline='') as csvfile:
-    reader = csv.DictReader(csvfile)
-    update_brief = []
-    for row in reader:
-        print("do a thing once")
-   with open('C:\\Users\\timot\\Documents\\Python_local\\python_projects\\test.txt', 'a') as f:
-    f.write(completed_brief + '\n')
-
-prestoChango(brief_csv) 
-
-
-
-
-
-
-###############################################################################################################
-
-
 
 ### add todays date to the title of the new master brief tracker (maybe the text document)
 
@@ -152,11 +123,6 @@ brief_request = str(input("Enter a brief name: LOAC, JFAM, or SAF"))
 
 
 
-
-
-
-
-
 ########################## DataFrame format ############################
 
 pd.read_excel(path)
@@ -166,3 +132,83 @@ pd.read_excel(path)
 0  123456   jmorin   CN=MORIN JOSEPH, THING=xxx 2022-10-01
 1  789123  ftorres  CN=TORRES FABIAN, THING=xxx 2022-10-02
 2  456789  choggle  CN=HOGGLE CHANCE, THING=xxx 2022-10-03 """
+
+
+##############################EXPERIMENTING#IGNORE#THIS#####################################################
+
+# experiement on recursive version here
+
+def prestoChango(brief_csv): 
+   with open(brief_csv, newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    update_brief = []
+    for row in reader:
+        print("do a thing once")
+   with open('C:\\Users\\timot\\Documents\\Python_local\\python_projects\\test.txt', 'a') as f:
+    f.write(completed_brief + '\n')
+
+prestoChango(brief_csv) 
+
+
+directory = 'C:\\Users\\timot\Documents\\Python_local\\python_projects'
+ 
+# getting closer.... but is this what I want to do? Figure it out tomorrow.
+
+with open('brief_list.txt', 'w') as f:
+    for file in os.listdir(directory):
+        file_name = os.path.basename(file).split('/')[-1] 
+        brief_name = str(re.findall("(LOAC|JFAM|UAUP)", file_name))
+        f.write(brief_name + '\n')
+
+
+
+directory = 'C:\\Users\\timot\Documents\\Python_local\\python_projects'
+Source_Workbook = []
+for filename in os.listdir(directory):
+    if filename.endswith(".xlsx"):
+        Source_Workbook.append(filename)
+        print(Source_Workbook)
+
+
+###################################
+
+# I'd like to iterate over the files in the directory, and for each one, get their filename, then their briefname from the filename, and then pass that on to the prestoChango function, so that it can append the converted dictionaries, as strings, to a text file.
+
+
+directory = 'C:\\Users\\timot\Documents\\Python_local\\python_projects'
+ 
+def briefFiles(directory):
+    for filename in os.listdir(directory):
+        file_name = os.path.basename(filename).split('/')[-1] 
+        brief_name = re.findall('(LOAC|JFAM|UAUP)', file_name)[0]
+        print(brief_name)
+
+
+briefFiles(directory)            
+
+bfs = briefFiles(directory)
+
+#file = 'C:\\Users\\timot\Documents\\Python_local\\python_projects\\LOAC_20221105.xlsx'
+
+
+def briefName(file):
+    file_name = os.path.basename(file).split('/')[-1] 
+    brief_name = re.findall('(LOAC|JFAM|UAUP)', file_name)[0]
+    return brief_name
+
+briefName(file)        
+
+###############################################################################################################
+
+
+
+
+from os import walk
+
+dir_path = 'C:\\Users\\timot\Documents\\Python_local\\python_projects'
+
+# list to store files name
+res = []
+for (dir_path, dir_names, file_names) in walk(dir_path):
+    res.extend(file_names)
+print(res)
