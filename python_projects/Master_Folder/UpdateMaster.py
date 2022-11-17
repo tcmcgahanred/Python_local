@@ -20,17 +20,12 @@ excel_files = 'C:\\Users\\timot\\Documents\\python\\Python_local\\python_project
 def prestoConverto(excel_files):
     for file in excel_files:
         brief_xlsx = pd.read_excel(file)
-        fileconvert = brief_xlsx.to_csv(brief_xlsx, index = None, header=True) 
+        fileconvert = brief_xlsx.to_csv(brief_xlsx, index=None, header=True) 
         return fileconvert
 
 brief_csv = prestoConverto(excel_files)
 
 print(brief_csv)
-
-
-df = pd.DataFrame(pd.read_csv("Test.csv"))
-df
-
 
 
 for file_path in brief_files:
