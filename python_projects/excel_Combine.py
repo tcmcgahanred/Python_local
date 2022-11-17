@@ -61,32 +61,16 @@ fileName(bfs)
 
 directory = 'C:\\Users\\timot\Documents\\Python_local\\python_projects'
  
-for filename in os.listdir(directory):
-    f = os.path.join(directory, filename)
-    if os.path.isfile(f):
-        for brief in directory:
-            brieflist = []
-            file_name = os.path.basename(filename).split('/')[-1] 
-            #brief_name = re.findall('\w{3,4}', file_name)[0]
-            brief_name = re.findall("(LOAC)|(JFAM)|(UAUP)", file_name)
-            #brieflist.write(brief_name))
-            print(brief_name)
-    else:
-        print("Not a file")
-        
-        
-        re.findall("LOAC | JFAM | UAUP", cwd)
+# getting closer.... but is this what I want to do? Figure it out tomorrow.
+
+with open('brief_list.txt', 'w') as f:
+    for file in os.listdir(directory):
+        file_name = os.path.basename(file).split('/')[-1] 
+        brief_name = str(re.findall("(LOAC|JFAM|UAUP)", file_name))
+        f.write(brief_name + '\n')
 
 
 
-    
-
-
-lines = ['Readme', 'How to write text files in Python']
-with open('readme.txt', 'w') as f:
-    for line in lines:
-        f.write(line)
-        f.write('\n')
 
 
 ###############################################################################################################
