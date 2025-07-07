@@ -6,7 +6,10 @@
 
 # check your data!!!!!! use type() on everything you're ingesting first to confirm it hasn't changed!!!!!!!!!
 
-# import sys
+# import sys - System-specific parameters
+# import os - File system / environment
+# import json - JSON encode/decode
+# import datetime - Dates & times
 # print(sys.path)
 # Add path sys.path.append(r'C:/directory/of/choice/') # note the 'r' at the start. Turns string into raw string, which Windows will accept.
 # sys.path.remove('path')
