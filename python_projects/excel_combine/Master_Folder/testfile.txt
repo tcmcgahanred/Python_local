@@ -1,0 +1,112 @@
+Timothy C. McGahan
+4535 Shenadoah Rd Rocklin, CA 95765
+(916) 844-5579
+timothy.mcgahan@outlook.com
+https://www.linkedin.com/in/timothy-mcgahan
+
+
+QUALIFICATIONS SUMMARY
+
+A seasoned leader with 16 years of problem solving, analysis, and technical experience. Excells at leading and focusing a team towards singular, unified goal. Proven history of strong work ethic and excellent teamwork skills used to communicate clearly and effectively with individuals on all levels in order to further those goals. A robust knowledge of cybersecurity, cyber threat intelligence, cyber incident response, and a subject matter expert in intelligence. Incredibly process oriented and driven. Champions policy and systemic changes for increases to security posture at every level. Possesses a Top Secret (TS/SCI w/ CI Poly) security clearance. 
+
+
+CORE COMPETENCIES
+
+	Leadership		Cybersecurity		Intelligence
+	Threat Intelligence		Process Improvement 		Process Management
+	Network Defense		Customer Success		Security Operations
+
+
+
+
+EXPERIENCE
+
+Security Content Development: California Department of Technology
+02/20-Present
+
+•	Conducted research to guide the creation of custom detection rules based on MITRE ATT&CK framework. 
+•	Developed and maintained a detection strategy and logging policies based on TTPs associated with the MITRE ATT&CK framework and Lockheed Martin Cyber Kill Chain. 
+•	Created detection rules based on organizationally specific vulnerabilities and gaps in coverage. 
+•	Remediated detections that were ruled as false positive by customers and the SOC. 
+•	Conducted threat emulation, utilizing Atomic Read Team, in order to test the detection rule strategy.
+
+
+Analytical Support Officer: California Army National Guard
+02/20-Present
+
+•	Provided cyber defenders with all-source intelligence assessments and estimates dealing with threat capabilities, intentions, vulnerabilities, effects of cyber terrain on operations, and predictions of threat courses of action. 
+•	Directed tasking of intelligence collection assets, to include the customization of organizational logging policy.
+•	Produces threat estimates to support policy and training. 
+•	Ensured proper dissemination of tailored intelligence information and products. 
+•	Managed and operated the organization access programs.
+
+Cyber Analyst Shift Manager: California Department of Technology
+04/18-02/20
+
+•	A senior member of the Security Operations Center (SOC) worked independently as a recognized technical security expert and supervised SOC Analysts who performed Tier 3/2/1 SOC duties as part of the security detection, analysis, and response team IOT provide critical protection of California Department of Technology (CDT) and State IT assets.
+•	Developed/maintained working level knowledge of IT infrastructure/technologies under the protection of the SOC, applicable State/Federal and industry regulations/best practices with respect to information security, department and information security policies/procedures and vulnerability/threat management technologies, products, practices, and processes.
+•	Developed/maintained mastery level and current knowledge of the IT threat landscape, risk management processes/technologies, multiple operating systems, network architecture/protocols and more. Utilized/assisted in the development of state-of-the-art technologies and processes to achieve those protections. 
+•	Monitored/managed critical SOC technologies, including intrusion: detection/protection devices, host-based protection technologies, packet capture and metadata analytic systems.
+
+
+Senior Watch Officer: Army Cyber Command, US Army 
+04/17-04/18 
+•	Directly responsible for operational oversight and the mitigation of risk to cyber platform infrastructure. 
+•	Assisted in the oversite of the implementation of a scalable risk management framework for the cyberspace infrastructure managed by the Joint Mission Operation Center (JMOC). 
+•	Assisted in the development and establishment of the JMOC processes and operational roles and the first ever metrics used to track organizational customer throughput, which directly contributed to an immediate capability to manage the operation of infrastructure resources efficiently and effectively. 
+•	Responsible for collaborating with customers, facilitating, and allocating JMOC resources for continued operations which led to dozens of successful missions in support of partner organizations. 
+
+
+
+
+EDUCATION
+
+Cyber Officer Operations Course (CYOOC)
+06/19-02/20
+
+Defense Cyber Investigations Training Academy (DCITA)
+02/2017
+
+University of San Diego
+01/17-08/18
+Master of Science, Cyber Security Operations and Leadership
+
+California State University Sacramento
+08/10-05/12 
+Bachelor of Arts, Political Science  
+CERTIFICATIONS
+
+
+Certified Information Systems Security Professional (CISSP)
+May 2021 – Certification Number 762384
+
+GIAC Information Security Professional (GISP)
+May 2021
+
+GIAC Certified Incident Handler (GCIH)
+Dec 2018 - License 33587
+
+GIAC Python Coder (GPYC)
+Oct 2022 - Analyst Number 1736
+
+Cisco Certified Network Associate Routing and Switching (CCNA)
+Sept 2019 – CSCO13505575‎
+
+Cisco Certified Entry Networking Technician (CCENT)
+Aug 2019 - CSCO13505575‎
+
+CompTIA Security + Certification
+Jan 2018 - License P8P9TRTNMD441V3P
+
+Accredited Configuration Engineer (ACE) Exam - PAN-OS 8.1 Version
+Feb 2019
+
+Firewall Essentials: Configuration and Management (EDU-210) - Vets In Tech Feb 2019
+
+TECHNICAL SKILLS
+
+Network Traffic Analysis, Cyber Threat Intelligence, Threat emulation, OSINT collection and analysis, Defense in Depth Methodologies, NIST 800-53, Cyber Security Business Integration Strategies, Windows, Active Directory, Mitre ATT&CK, Cyber Kill Chain, SysInternals Suite, Atomic Red Team, Atomic Threat Coverage, Sigma, Gitlab, Agile Methodologies, Sysmon, Splunk, Splunk Attack Range, Cyber Kill Chain, Python
+
+
+
+
